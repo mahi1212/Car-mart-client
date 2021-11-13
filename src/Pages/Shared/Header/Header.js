@@ -1,136 +1,121 @@
-import React, { Component } from 'react';
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import PropTypes from 'prop-types';
-import {
-    AppBar, Toolbar, Typography, List, ListItem,
-    withStyles, Grid, SwipeableDrawer
-} from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { makeStyles } from '@material-ui/core';
+import { useTheme } from '@mui/material';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
-// Resposive header
-const styleSheet = {
-    list: {
-        width: 300,
-    },
-    padding: {
-        paddingRight: 30,
-        cursor: "pointer",
-    },
 
-    sideBarIcon: {
-        padding: 0,
-        color: "white",
-        cursor: "pointer",
-    }
-}
-
-class Header extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { drawerActivate: false, drawer: false };
-        this.createDrawer = this.createDrawer.bind(this);
-        this.destroyDrawer = this.destroyDrawer.bind(this);
-    }
-
-    componentWillMount() {
-        if (window.innerWidth <= 600) {
-            this.setState({ drawerActivate: true });
+const Header = () => {
+    const { user, logout } = useAuth()
+    const theme = useTheme()
+    const useStyle = makeStyles({
+        navIcon: {
+            [theme.breakpoints.up('sm')]: {
+                display: 'none !important'
+            }
+        },
+        navItemContainer: {
+            [theme.breakpoints.down('sm')]: {
+                display: 'none !important'
+            }
+        },
+        mobLink : {
+            color: '#000',
+            fontWeight: 700
         }
+    })
+    const { navIcon, navItemContainer, mobLink } = useStyle()
+    const [state, setState] = React.useState(false);
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth <= 600) {
-                this.setState({ drawerActivate: true });
-            }
-            else {
-                this.setState({ drawerActivate: false })
-            }
-        });
-    }
-    
-    // Mobile Screens view
-    createDrawer() {
-        
-        return (
-            <div>
-                <AppBar >
-                    <Toolbar style={{ background: '#142F43' }}>
-                        <Grid container direction="row" justify="space-between" alignItems="center">
-                            <MenuIcon
-                                className={this.props.classes.sideBarIcon}
-                                onClick={() => { this.setState({ drawer: true }) }} />
+    const list = (
+        <Box
+            sx={{ width: 250 }}
+            role="presentation"
+        >
+            <List>
+                <ListItem button >
+                    <NavLink className={mobLink} style={{ textDecoration: 'none' }} to='/explore'>Explore</NavLink>
+                </ListItem>
+                <Divider />
+                {user.displayName ?
+                    <ListItem button >
+                        <NavLink className={mobLink} style={{ textDecoration: 'none' }} to='/dashboard'>Dashboard</NavLink>
+                    </ListItem>
+                    :
+                    <ListItem button >
+                        <NavLink className={mobLink} style={{ textDecoration: 'none' }} to='/login'>Login</NavLink>
+                    </ListItem>
+                }
+                <Divider />
+                {
+                    user?.email && <Button onClick={logout} style={{ textDecoration: 'none' }} color="inherit">Logout</Button>
+                }
+            </List>
+        </Box>
+    );
 
-                            <Typography color="inherit" variant="h5">Car Mart</Typography>
-                            <Typography color="inherit" variant="headline"> </Typography>
-                        </Grid>
+    return (
+        <>
+            <Box sx={{ flexGrow: 1 }} >
+                <AppBar position="static">
+                    <Toolbar style={{ background: '#142F43', padding: '7px 2rem' }}>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                            className={navIcon}
+                            onClick={() => setState(true)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            Car Mart
+                        </Typography>
+                        <Box className={navItemContainer}>
+                            <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/explore'><Button color="inherit">Explore</Button></NavLink>
+                            {user?.email ?
+                                <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/dashboard'>
+                                    <Button color="inherit">Dashboard</Button>
+                                </NavLink>
+
+                                : <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/login'>
+                                    <Button color="inherit">Login</Button>
+                                </NavLink>
+                            }
+                            {
+                                user?.email && <Button onClick={logout} style={{ textDecoration: 'none' }} color="inherit">Logout</Button>
+                            }
+                        </Box>
                     </Toolbar>
                 </AppBar>
-
-                <SwipeableDrawer
-                    open={this.state.drawer}
-                    onClose={() => { this.setState({ drawer: false }) }}
-                    onOpen={() => { this.setState({ drawer: true }) }}>
-
-                    <div
-                        tabIndex={0}
-                        role="button"
-                        onClick={() => { this.setState({ drawer: false }) }}
-                        onKeyDown={() => { this.setState({ drawer: false }) }}>
-
-                        <List className={this.props.classes.list}>
-                            <ListItem key={1} button divider>
-                                <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Explore</NavLink>
-                            </ListItem>
-                            <ListItem key={2} button divider>
-                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Dashboard</NavLink>
-                            </ListItem>
-                            {
-
-                            }
-                            <ListItem key={3} button divider>
-                                <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Login</NavLink>
-                            </ListItem>
-
-                        </List>
-                    </div>
-                </SwipeableDrawer>
-            </div>
-        );
-    }
-
-    //Laptop Screens
-    destroyDrawer() {
-        const { classes } = this.props
-        return (
-            <AppBar>
-                <Toolbar style={{ background: '#142F43', padding: '7px 50px' }}>
-                    <Typography variant="h5" style={{ flexGrow: 1, }} color="inherit" >Car Mart</Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Explore</NavLink>
-                    </Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Dashboard</NavLink>
-                    </Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Login</NavLink>
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-        )
-    }
-
-    render() {
-        return (
+            </Box>
             <div>
-                {this.state.drawerActivate ? this.createDrawer() : this.destroyDrawer()}
+                <React.Fragment>
+                    <SwipeableDrawer
+                        open={state}
+                        onClose={() => setState(false)}
+                        onOpen={() => setState(true)}
+                    >
+                        {list}
+                    </SwipeableDrawer>
+                </React.Fragment>
             </div>
-        );
-    }
-}
-
-Header.propTypes = {
-    classes: PropTypes.object.isRequired
+        </>
+    );
 };
 
-export default withStyles(styleSheet)(Header);
+export default Header;

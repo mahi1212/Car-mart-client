@@ -56,8 +56,9 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // const destination = location?.state?.from || '/home'
-                // history.replace(destination)
+                const destination = location?.state?.from || '/home'
+                history.replace(destination)
+                
                 setAuthError('');
             }).catch((error) => {
                 setAuthError(error.message);
