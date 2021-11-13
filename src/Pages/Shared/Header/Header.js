@@ -6,6 +6,7 @@ import {
     withStyles, Grid, SwipeableDrawer
 } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 // Resposive header
 const styleSheet = {
@@ -25,6 +26,7 @@ const styleSheet = {
 }
 
 class Header extends Component {
+
     constructor(props) {
         super(props);
         this.state = { drawerActivate: false, drawer: false };
@@ -46,9 +48,10 @@ class Header extends Component {
             }
         });
     }
-
+    
     // Mobile Screens view
     createDrawer() {
+        
         return (
             <div>
                 <AppBar >
@@ -77,13 +80,16 @@ class Header extends Component {
 
                         <List className={this.props.classes.list}>
                             <ListItem key={1} button divider>
-                                <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff' }}>Explore</NavLink>
+                                <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Explore</NavLink>
                             </ListItem>
                             <ListItem key={2} button divider>
-                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff' }}>Dashboard</NavLink>
+                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Dashboard</NavLink>
                             </ListItem>
+                            {
+
+                            }
                             <ListItem key={3} button divider>
-                                <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff' }}>Login</NavLink>
+                                <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Login</NavLink>
                             </ListItem>
 
                         </List>
@@ -101,13 +107,13 @@ class Header extends Component {
                 <Toolbar style={{ background: '#142F43', padding: '7px 50px' }}>
                     <Typography variant="h5" style={{ flexGrow: 1, }} color="inherit" >Car Mart</Typography>
                     <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff' }}>Explore</NavLink>
+                        <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Explore</NavLink>
                     </Typography>
                     <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff' }}>Dashboard</NavLink>
+                        <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Dashboard</NavLink>
                     </Typography>
                     <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
-                        <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff' }}>Login</NavLink>
+                        <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff', padding:'5px 10px'}}>Login</NavLink>
                     </Typography>
                 </Toolbar>
             </AppBar>

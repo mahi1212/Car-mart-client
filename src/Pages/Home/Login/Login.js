@@ -2,12 +2,13 @@ import { Container, Grid, TextField, Typography, Button, CircularProgress, Alert
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import pic from '../../../images/login.jpg'
 import Header from '../../Shared/Header/Header';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({})
-    // const { user, loginUser, isLoading, authError, signInUsingGoogle} = useAuth()
+    const { user, loginUser, isLoading, authError, signInUsingGoogle } = useAuth()
 
     const location = useLocation()
     const history = useHistory()
@@ -21,22 +22,22 @@ const Login = () => {
     }
     // Form authentication
     const handleLoginSubmit = e => {
-        // loginUser(loginData.email, loginData.password, location, history)
+        loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault();
     }
 
     // Google authentication
     const handleGoogleSignin = (location, history) => {
-        // signInUsingGoogle(location, history)
+        signInUsingGoogle(location, history)
     }
     return (
         <Container>
             <Header></Header>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} >
-                    <img src={pic} alt="login_image" sx={{boxShadow: 5}} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '50vh', width: "100%", marginRight: '30px', borderRadius: '10px', marginTop: '2rem' }} />
+                    <img src={pic} alt="login_image" sx={{ boxShadow: 5 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '50vh', width: "100%", marginRight: '30px', borderRadius: '10px', marginTop: '2rem' }} />
                 </Grid>
-                <Grid item xs={12} md={6} style={{ marginTop: '10rem', background: '#fff', border: '1px solid #000', borderRadius: '10px' }} >
+                <Grid item xs={12} md={6} style={{ marginTop: '6rem', background: '#fff', border: '1px solid #000', borderRadius: '10px', padding: '20px 0'}} >
                     <Typography variant="h4" gutterBottom sx={{ color: 'text.secondary', textAlign: 'center' }}>Login</Typography>
                     <form onSubmit={handleLoginSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                         <TextField id="standard-basic" sx={{ width: '75%', mt: 2 }}
@@ -61,15 +62,16 @@ const Login = () => {
                         <NavLink to='/register'>
                             <Button sx={{ width: '100%', mt: 4 }} variant="text" type='submit'>New here? Register</Button>
                         </NavLink>
-                        {/* {
+                        {
                             isLoading && <CircularProgress />
-                        } */}
-                        {/* {user?.email && <Alert severity="success">User Logged in!</Alert>}
-                        {authError && <Alert severity="error">{authError}</Alert>} */}
+                        }
+                        {user?.email && <Alert severity="success">User Logged in!</Alert>}
+                        {authError && <Alert severity="error">{authError}</Alert>}
                     </form>
                     <p style={{ textAlign: 'center' }}>___________ <sub>or</sub> ___________</p>
-                    <Box sx={{textAlign: 'center'}}>
-                        <Button variant="text" style={{ color: '#fff', background: '#1565C0', margin: '0 auto' }}><i onClick={handleGoogleSignin} class="fab fa-google fa-2x"></i>Google Signin</Button>
+                    <Box sx={{ textAlign: 'center' }}>
+                        <i onClick={handleGoogleSignin}
+                        style={{ color: '#1565C0', background: '#fff', margin: '0 auto', border:'1px solid #000', borderRadius:'50%', padding: '10px', cursor: 'pointer' }} class="fab fa-google fa-2x"></i>
                     </Box>
                 </Grid>
             </Grid>
