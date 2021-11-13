@@ -5,11 +5,12 @@ import {
     AppBar, Toolbar, Typography, List, ListItem,
     withStyles, Grid, SwipeableDrawer
 } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
 // Resposive header
 const styleSheet = {
     list: {
-        width: 200,
+        width: 300,
     },
     padding: {
         paddingRight: 30,
@@ -75,9 +76,16 @@ class Header extends Component {
                         onKeyDown={() => { this.setState({ drawer: false }) }}>
 
                         <List className={this.props.classes.list}>
-                            <ListItem key={1} button divider> Explore </ListItem>
-                            <ListItem key={2} button divider> Dashboard </ListItem>
-                            <ListItem key={3} button divider> Login </ListItem>
+                            <ListItem key={1} button divider>
+                                <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff' }}>Explore</NavLink>
+                            </ListItem>
+                            <ListItem key={2} button divider>
+                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff' }}>Dashboard</NavLink>
+                            </ListItem>
+                            <ListItem key={3} button divider>
+                                <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff' }}>Login</NavLink>
+                            </ListItem>
+
                         </List>
                     </div>
                 </SwipeableDrawer>
@@ -92,9 +100,15 @@ class Header extends Component {
             <AppBar>
                 <Toolbar style={{ background: '#142F43', padding: '7px 50px' }}>
                     <Typography variant="h5" style={{ flexGrow: 1, }} color="inherit" >Car Mart</Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >Explore</Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >Dashboard</Typography>
-                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >Login</Typography>
+                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
+                        <NavLink to="/explore" style={{ textDecoration: 'none', color: '#fff' }}>Explore</NavLink>
+                    </Typography>
+                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
+                        <NavLink to="/dashboard" style={{ textDecoration: 'none', color: '#fff' }}>Dashboard</NavLink>
+                    </Typography>
+                    <Typography style={{ fontSize: '18px', marginRight: '10px' }} className={classes.padding} color="inherit" >
+                        <NavLink to="/login" style={{ textDecoration: 'none', color: '#fff' }}>Login</NavLink>
+                    </Typography>
                 </Toolbar>
             </AppBar>
         )
