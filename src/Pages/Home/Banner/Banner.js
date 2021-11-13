@@ -6,12 +6,12 @@ import { Button, Typography } from '@mui/material';
 
 const bannerBg = {
     background: `url(${background})`,
-    marginTop: '90px',
-    height: '100vh',
+    // marginTop: '200px',
+    height: '80vh',
     backgroundRepeat: 'no-repeat',
-    // backgroundAttachment: 'fixed',
+    backgroundAttachment: 'fixed',
     backgrounPosition: 'center',
-    backgroundSize: 'cover',
+    backgroundSize: '100% 100%',
 }
 
 const Banner = () => {
