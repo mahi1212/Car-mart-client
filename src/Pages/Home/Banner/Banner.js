@@ -6,7 +6,6 @@ import { Button, Typography } from '@mui/material';
 
 const bannerBg = {
     background: `url(${background})`,
-    // marginTop: '200px',
     height: '80vh',
     backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed',

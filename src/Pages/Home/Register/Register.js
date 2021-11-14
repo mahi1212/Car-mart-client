@@ -1,12 +1,12 @@
 import { Container, Grid, TextField, Typography, Button, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink, useHistory , useLocation} from 'react-router-dom';
-// import useAuth from '../../../hooks/useAuth';
+import { NavLink, useHistory } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import pic from '../../../images/login.jpg'
 
 const Register = () => {
     const [loginData, setLoginData] = useState({})
-    // const {user, registerUser, isLoading, authError} = useAuth()
+    const {user, registerUser, isLoading, authError} = useAuth()
 
     const history = useHistory()
 
@@ -17,15 +17,14 @@ const Register = () => {
         const newLoginData = { ...loginData }
         newLoginData[field] = value
         setLoginData(newLoginData)
-        console.log(newLoginData)
     }
 
-    const handleLoginSubmit = e => {
+    const handleRegisterSubmit = e => {
         if(loginData.password !== loginData.password2){
             alert("Password did not matched")
             return
         }
-        // registerUser(loginData.name, loginData.email, loginData.password, history)
+        registerUser(loginData.name, loginData.email, loginData.password, history)
         e.preventDefault();
     }
     return (
@@ -33,8 +32,8 @@ const Register = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height:'100vh' }} >
                     <Typography variant="h5" gutterBottom sx={{ color: 'text.secondary' }}>Register</Typography>
-                    {/* !isLoading && */}
-                    {  <form onSubmit={handleLoginSubmit}>
+                    
+                    { !isLoading && <form onSubmit={handleRegisterSubmit}>
                         <TextField id="standard-basic" sx={{ width: '100%', mt: 2 }}
                             label="Your Name"
                             name="name"
@@ -75,11 +74,11 @@ const Register = () => {
                             <Button sx={{ width: '100%', mt: 4 }} variant="text" type='submit'>Already registered? login</Button>
                         </NavLink>
                     </form>}
-                    {/* {
+                    {
                         isLoading && <CircularProgress />
                     }
                     {user?.email && <Alert severity="success">User created successfully!</Alert>}
-                    { authError && <Alert severity="error">{authError}</Alert>} */}
+                    { authError && <Alert severity="error">{authError}</Alert>}
                 </Grid>
                 <Grid item xs={12} md={6} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
                     <img src={pic} alt="login_image" style={{ width: "100%", borderRadius: '10px' }} />

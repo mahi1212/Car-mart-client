@@ -51,7 +51,7 @@ import Product from '../Product/Product';
 const Products = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://powerful-brushlands-32905.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -61,10 +61,9 @@ const Products = () => {
             <Grid container spacing={{ xs: 2, md: 2 }} sx={{ py: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
                 {
                     // setting limitation .slice(0,6)
-                    window.location.href === 'http://localhost:3000/home' ? 
-                    products.slice(0,4).map(product => <Product product={product} key={product.id}></Product>) : 
-                    products.map(product => <Product product={product} key={product.id}></Product>)
-                    
+                    window.location.href === 'http://localhost:3000/home' || 'NaN' ?
+                        products.slice(0, 4).map(product => <Product product={product} key={product.id}></Product>) :
+                        products.map(product => <Product product={product} key={product.id}></Product>)
                 }
             </Grid>
         </>
