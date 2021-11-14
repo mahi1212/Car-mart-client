@@ -1,0 +1,28 @@
+.full-form{
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.form-design{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    border-radius: 10px;
+    background: darkorchid;
+    margin: 0 auto;
+}
+
+.form-design input, textarea{
+    border: 1px solid slateblue;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin-top: 5px;
+    max-width: 350px;
+    border-radius: 5px;
+}
+.button{
+    background:rgb(25, 189, 10);
+    cursor: pointer;
+}
