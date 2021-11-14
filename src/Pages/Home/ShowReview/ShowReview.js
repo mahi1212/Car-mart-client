@@ -13,7 +13,7 @@ const ShowReview = () => {
     return (
         <div>
             <h2 style={{ textAlign: 'center', paddingBottom: '30px'}}>WHAT CLIENT SAYS ABOUT US</h2>
-            <Grid container spacing={{ xs: 2, md: 2 }} sx={{ py: 3, background: '#ccc' }} columns={{ xs: 4, sm: 4, md: 12 }}>
+            <Grid container spacing={{ xs: 2, md: 2 }} sx={{ py: 3, background: '#142F43' }} columns={{ xs: 4, sm: 4, md: 12 }}>
                 {
                     review.map(single => <SingleReview single={single} key={single.id}></SingleReview>)
                 }

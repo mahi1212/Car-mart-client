@@ -120,7 +120,8 @@ function Dashboard(props) {
             >
                 <Toolbar />
                 <Typography paragraph>
-                    Select Choice
+                    <h1> Notice : </h1>
+                    <h2> Our payment system is currently disabled! We are woking for a secured gateway system.</h2>
                 </Typography>
             </Box>
         </Box>

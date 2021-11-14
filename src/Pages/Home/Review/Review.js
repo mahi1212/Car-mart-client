@@ -3,12 +3,8 @@ import axios from 'axios'
 import { useForm } from "react-hook-form";
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
-
 import './Review.css'
 import useAuth from '../../../hooks/useAuth';
-// import { Button, TextField } from '@mui/material';
-
-
 
 const Review = () => {
     const { user } = useAuth()
@@ -33,8 +29,8 @@ const Review = () => {
                     <h2>REVIEW</h2>
                     <input {...register("name", { required: true, maxLength: 20 })} value={user?.displayName} />
                     <input {...register("email")} value={user?.email} />
-                    <textarea {...register("description")} placeholder="Your Review Here" />
-                    <input type="submit" value='Confirm Order' className='button' />
+                    <textarea {...register("description")} placeholder="Your Review Here" required/>
+                    <input type="submit" value='Confirm Review' className='button' />
                 </form>
             </div>
 

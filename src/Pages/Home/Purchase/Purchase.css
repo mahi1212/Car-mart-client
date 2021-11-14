@@ -1,0 +1,47 @@
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    flex-direction: column;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    padding: 1rem;
+    border: 1px solid #777;
+    text-align: left;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.form input{
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    height: 20px;
+    margin: 5px 0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: rgb(220, 235, 240);
+}
+
+.form textarea{
+    height: 100px;
+    width: 100%;
+    border: none;
+}
+@media screen and (max-width:700px){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .form{
+        width: 90vw;
+    }
+
+}
