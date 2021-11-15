@@ -1,8 +1,8 @@
 import React from 'react';
-import background from '../../../images/banner.png'
+import background from '../../../images/crown.jpg'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 const bannerBg = {
     background: `url(${background})`,
