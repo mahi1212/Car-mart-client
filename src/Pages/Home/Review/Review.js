@@ -23,7 +23,6 @@ const Review = () => {
 
     return (
         <div>
-            <Header></Header>
             <div className='full-form'>
                 <form className='form-design' style={{ padding: '1rem' }} onSubmit={handleSubmit(onSubmit)}>
                     <h2>REVIEW</h2>
@@ -33,8 +32,6 @@ const Review = () => {
                     <input type="submit" value='Confirm Review' className='button' />
                 </form>
             </div>
-
-            <Footer></Footer>
         </div>
     );
 };

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
-import Footer from '../../Shared/Footer/Footer';
-import Header from '../../Shared/Header/Header';
 
 const MyOrder = () => {
     const [orders, setOrders] = useState([])
@@ -31,7 +29,6 @@ const MyOrder = () => {
 
     return (
         <div>
-            <Header></Header>
             <h2 style={{ textAlign: 'center' }}>List of your orders</h2>
             <ol>
                 {
@@ -41,7 +38,6 @@ const MyOrder = () => {
                     </li>)
                 }
             </ol>
-            <Footer></Footer>
         </div>
     );
 };
