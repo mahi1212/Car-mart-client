@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios'
 import './Purchase.css'
+import { Alert } from '@mui/material';
 
 const Purchase = () => {
     const [product, setProduct] = useState([])
@@ -36,7 +37,7 @@ const Purchase = () => {
             <Header></Header>
             <div className='box'>
                 <h2>PURCHASE PRODUCT</h2>
-
+                <Alert severity="warning">Set Proper Name and adress — for hassle free delivery!</Alert>
                 <form onSubmit={handleSubmit(onSubmit)} className="form" >
                     {/* Name, email etc from database */}
                     <input {...register("productName")} value={product?.name} defaultValue={'Car id no :'+ id } />

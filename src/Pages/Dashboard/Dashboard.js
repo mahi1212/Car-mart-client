@@ -70,24 +70,28 @@ function Dashboard(props) {
                     Logout
                 </ListItem>
                 <Divider />
-                <NavLink to={`${url}/makeAdmin`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Make Admin
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <NavLink to={`${url}/addProduct`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Add Product
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <NavLink to={`${url}/manageProduct`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Manage Product
-                    </ListItem>
-                </NavLink>
-                <Divider />
+                {admin &&
+                    <Box>
+                        <NavLink to={`${url}/makeAdmin`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Make Admin
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <NavLink to={`${url}/addProduct`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Add Product
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <NavLink to={`${url}/manageProduct`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Manage Product
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                    </Box>
+                }
 
 
             </List>
@@ -119,7 +123,7 @@ function Dashboard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar style={{ background: '#142F43' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
