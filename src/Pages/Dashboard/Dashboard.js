@@ -16,16 +16,15 @@ import useAuth from '../../hooks/useAuth';
 import {
     Switch,
     Route,
-    Link,
     useRouteMatch
 } from "react-router-dom";
 import DashboardHome from './DashboardHome/DashboardHome';
 import AddProduct from './AddProduct/AddProduct';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
-import { Button } from '@mui/material';
 import Payment from '../Payment/Payment';
 import MyOrder from './MyOrder/MyOrder';
 import Review from '../Home/Review/Review';
+import ManageProduct from './ManageProduct/ManageProduct';
 
 const drawerWidth = 240;
 function Dashboard(props) {
@@ -33,7 +32,7 @@ function Dashboard(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     let { path, url } = useRouteMatch();
-    const { user, admin } = useAuth();
+    const { user, logout, admin } = useAuth();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -67,6 +66,10 @@ function Dashboard(props) {
                     </ListItem>
                 </NavLink>
                 <Divider />
+                <ListItem button onClick={logout}>
+                    Logout
+                </ListItem>
+                <Divider />
                 <NavLink to={`${url}/makeAdmin`} style={{ color: '#000', textDecoration: 'none' }}>
                     <ListItem button>
                         Make Admin
@@ -79,11 +82,13 @@ function Dashboard(props) {
                     </ListItem>
                 </NavLink>
                 <Divider />
-                <NavLink to="/home" style={{ color: '#000', textDecoration: 'none' }}>
+                <NavLink to={`${url}/manageProduct`} style={{ color: '#000', textDecoration: 'none' }}>
                     <ListItem button>
-                        Home
+                        Manage Product
                     </ListItem>
                 </NavLink>
+                <Divider />
+
 
             </List>
             {/* <Link to=><Button color="inherit">Dashboard</Button></Link> */}
@@ -184,6 +189,9 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
+                    </Route>
+                    <Route path={`${path}/manageProduct`}>
+                        <ManageProduct></ManageProduct>
                     </Route>
                 </Switch>
 

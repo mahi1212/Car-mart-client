@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import SingleReview from '../../SingleReciew/SingleReview';
 
@@ -18,7 +18,6 @@ const ShowReview = () => {
                     review.map(single => <SingleReview single={single} key={single.id}></SingleReview>)
                 }
             </Grid>
-            {review.length}
         </div>
     );
 };
