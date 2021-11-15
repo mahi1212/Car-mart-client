@@ -16,7 +16,7 @@ const Products = () => {
             <Grid container spacing={{ xs: 2, md: 2 }} sx={{ py: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
                 {
                     // setting limitation .slice(0,6)
-                    window.location.href === 'https://jovial-noether-5986ce.netlify.app/home' || 'https://jovial-noether-5986ce.netlify.app/' ?
+                    window.location.href === 'https://jovial-noether-5986ce.netlify.app/home' ?
                         products.slice(0, 6).map(product => <Product product={product} key={product.id}></Product>) :
                         products.map(product => <Product product={product} key={product.id}></Product>)
                 }
