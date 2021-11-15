@@ -1,4 +1,4 @@
-import { Container, Grid, TextField, Typography, Button, CircularProgress, Alert } from '@mui/material';
+import { Grid, TextField, Typography, Button, CircularProgress, Alert } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
@@ -31,13 +31,13 @@ const Login = () => {
         signInUsingGoogle(location, history)
     }
     return (
-        <Container>
+        <>
             <Header></Header>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} >
                     <img src={pic} alt="login_image" sx={{ boxShadow: 5 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '50vh', width: "100%", marginRight: '30px', borderRadius: '10px', marginTop: '2rem' }} />
                 </Grid>
-                <Grid item xs={12} md={6} style={{ marginTop: '6rem', background: '#fff', border: '1px solid #000', borderRadius: '10px', padding: '20px 0'}} >
+                <Grid item xs={12} md={6} style={{ marginTop: '6rem', background: '#fff', border: '1px solid #000', borderRadius: '10px', padding: '20px 0' }} >
                     <Typography variant="h4" gutterBottom sx={{ color: 'text.secondary', textAlign: 'center' }}>Login</Typography>
                     <form onSubmit={handleLoginSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                         <TextField id="standard-basic" sx={{ width: '75%', mt: 2 }}
@@ -71,11 +71,11 @@ const Login = () => {
                     <p style={{ textAlign: 'center' }}>___________ <sub>or</sub> ___________</p>
                     <Box sx={{ textAlign: 'center' }}>
                         <i onClick={handleGoogleSignin}
-                        style={{ color: '#1565C0', background: '#fff', margin: '0 auto', border:'1px solid #000', borderRadius:'50%', padding: '10px', cursor: 'pointer' }} class="fab fa-google fa-2x"></i>
+                            style={{ color: '#1565C0', background: '#fff', margin: '0 auto', border: '1px solid #000', borderRadius: '50%', padding: '10px', cursor: 'pointer' }} class="fab fa-google fa-2x"></i>
                     </Box>
                 </Grid>
             </Grid>
-        </Container>
+        </ >
     );
 };
 

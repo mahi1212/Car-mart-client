@@ -26,7 +26,9 @@ const MyOrder = () => {
                 })
         }
     }
-
+    useEffect(()=>{
+        fetch(``)
+    },[])
     return (
         <div>
             <h2 style={{ textAlign: 'center' }}>List of your orders</h2>
