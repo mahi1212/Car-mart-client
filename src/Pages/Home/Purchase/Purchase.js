@@ -40,7 +40,7 @@ const Purchase = () => {
                 <Alert severity="warning">Please wait sometime before confirming order! Server may take time to load your data</Alert>
                 <form onSubmit={handleSubmit(onSubmit)} className="form" >
                     {/* Name, email etc from database */}
-                    <input {...register("productName")} defaultValue={product?.name} value={'Car id no :'+ id } />
+                    <input {...register("productName")} value={product?.name} defaultValue={'Car id no :'+ id } />
                     <input {...register("name", { required: true })} placeholder={user.displayName} required />
                     <input {...register("email")} value={user.email} />
                     <textarea {...register("description")} value={product?.description} />
