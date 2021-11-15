@@ -11,7 +11,7 @@ const Review = () => {
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/review', data)
+        axios.post('https://powerful-brushlands-32905.herokuapp.com/review', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added successfully')

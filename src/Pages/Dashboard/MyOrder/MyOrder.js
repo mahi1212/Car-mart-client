@@ -6,7 +6,7 @@ const MyOrder = () => {
     const { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://powerful-brushlands-32905.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -14,7 +14,7 @@ const MyOrder = () => {
     const handleDeleteOrder = id => {
         const proceed = window.confirm('Are you sure to delete order?')
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://powerful-brushlands-32905.herokuapp.com/orders/${id}`, {
                 method: 'DELETE'
             }).then(res => res.json())
                 .then(data => {
