@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios'
 import { useForm } from "react-hook-form";
-import Footer from '../../Shared/Footer/Footer';
-import Header from '../../Shared/Header/Header';
 import './Review.css'
 import useAuth from '../../../hooks/useAuth';
 

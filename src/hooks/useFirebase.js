@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import initiallizeFirebase from "../Pages/Home/Login/Firebase/Firebase.init";
 
-
 // initialize firebase
 initiallizeFirebase()
 
@@ -79,7 +78,7 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribed;
-    }, [])
+    }, [auth])
     
     useEffect(() => {
         fetch(`https://powerful-brushlands-32905.herokuapp.com/users/${user.email}`)

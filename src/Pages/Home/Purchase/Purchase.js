@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import { useForm } from "react-hook-form";
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios'
 import './Purchase.css'
@@ -18,7 +18,7 @@ const Purchase = () => {
         fetch(`https://powerful-brushlands-32905.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [product])
+    }, [id])
 
     // POST DATA TO SERVER
     const onSubmit = data => {

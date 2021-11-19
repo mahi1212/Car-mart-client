@@ -11,10 +11,7 @@ import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Home/Login/PrivateRoute/PrivateRoute';
-import Review from './Pages/Home/Review/Review';
-import Payment from './Pages/Payment/Payment';
 import Purchase from './Pages/Home/Purchase/Purchase';
-import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 
 function App() {
   return (
@@ -34,15 +31,6 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
-            {/* <PrivateRoute path="/review">
-              <Review></Review>
-            </PrivateRoute> */}
-            {/* <PrivateRoute path="/payment">
-              <Payment></Payment>
-            </PrivateRoute> */}
-            {/* <PrivateRoute path="/orders">
-              <MyOrder></MyOrder>
-            </PrivateRoute> */}
             <PrivateRoute path="/products/:id">
               <Purchase></Purchase>
             </PrivateRoute>

@@ -42,35 +42,8 @@ function Dashboard(props) {
             <Toolbar sx={{ textAlign: 'center' }}> Welcome <br /> {user.displayName.toUpperCase()}</Toolbar>
             <Divider />
             <List>
-                <NavLink to={`${url}`} activeClassName={{ color: 'green' }} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Dashboard
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <NavLink to={`${url}/orders`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        My Orders
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <NavLink to={`${url}/review`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Add Review
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <NavLink to={`${url}/payment`} style={{ color: '#000', textDecoration: 'none' }}>
-                    <ListItem button>
-                        Payment
-                    </ListItem>
-                </NavLink>
-                <Divider />
-                <ListItem button onClick={logout}>
-                    Logout
-                </ListItem>
-                <Divider />
-                {admin &&
+
+                {admin ?
                     <Box>
                         <NavLink to={`${url}/makeAdmin`} style={{ color: '#000', textDecoration: 'none' }}>
                             <ListItem button>
@@ -89,6 +62,41 @@ function Dashboard(props) {
                                 Manage Product
                             </ListItem>
                         </NavLink>
+                        <Divider />
+                        <ListItem button onClick={logout}>
+                            Logout
+                        </ListItem>
+                        <Divider />
+                    </Box>
+                    :
+                    <Box>
+                        <NavLink to={`${url}`} activeClassName={{ color: 'green' }} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Dashboard
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <NavLink to={`${url}/orders`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                My Orders
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <NavLink to={`${url}/review`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Add Review
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <NavLink to={`${url}/payment`} style={{ color: '#000', textDecoration: 'none' }}>
+                            <ListItem button>
+                                Payment
+                            </ListItem>
+                        </NavLink>
+                        <Divider />
+                        <ListItem button onClick={logout}>
+                            Logout
+                        </ListItem>
                         <Divider />
                     </Box>
                 }

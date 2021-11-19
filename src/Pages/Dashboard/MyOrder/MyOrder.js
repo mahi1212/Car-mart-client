@@ -9,7 +9,7 @@ const MyOrder = () => {
         fetch(`https://powerful-brushlands-32905.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [user.email])
 
     const handleDeleteOrder = id => {
         const proceed = window.confirm('Are you sure to delete order?')
