@@ -12,7 +12,7 @@ const Products = () => {
 
     return (
         <>
-            <h2 style={{ textAlign: 'center' }}>OUR PRODUCTS</h2>
+            <h2 style={{ textAlign: 'center' }} className='effect'>OUR PRODUCTS</h2>
             <Grid container spacing={{ xs: 2, md: 2 }} sx={{ py: 3 }} columns={{ xs: 4, sm: 4, md: 12 }}>
                 {
                     // setting limitation .slice(0,6)

@@ -1,0 +1,21 @@
+.effect {
+  position: relative;
+}
+
+.effect::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 5rem;
+  bottom: -10px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  background: green;
+  transition: 1.5s;
+}
+
+.effect:hover::after {
+  width: 11rem;
+  background: navy;
+}

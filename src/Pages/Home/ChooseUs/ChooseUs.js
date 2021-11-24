@@ -3,11 +3,12 @@ import React from 'react';
 import payment from '../../../images/payment.png'
 import discount from '../../../images/discount.png'
 import flash from '../../../images/flash.png'
+import './ChooseUs.css'
 
 const ChooseUs = () => {
     return (
         <div>
-            <h2 style={{textAlign: 'center'}}>WHY CHOOSE US</h2>
+            <h2 className='effect' style={{textAlign: 'center'}}>WHY CHOOSE US</h2>
             <Grid container spacing={2}>
                 <Grid item sm={12} md={4}>
                     <img style={{width: '100%'}} src={payment} alt="" />
