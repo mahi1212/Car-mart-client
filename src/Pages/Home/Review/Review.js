@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Review = () => {
     const { user } = useAuth()
-
+    // Send to database
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         axios.post('https://powerful-brushlands-32905.herokuapp.com/review', data)

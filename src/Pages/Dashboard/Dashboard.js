@@ -100,10 +100,6 @@ function Dashboard(props) {
                         <Divider />
                     </Box>
                 }
-
-
-            </List>
-            
             </List>
         </div>
     );
