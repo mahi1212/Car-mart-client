@@ -103,18 +103,7 @@ function Dashboard(props) {
 
 
             </List>
-            {/* <Link to=><Button color="inherit">Dashboard</Button></Link> */}
-            {/* <Link ><Button color="inherit">Make Admin</Button></Link> */}
-            {/* <Link ><Button color="inherit">Add Doctor</Button></Link> */}
-            {/* {admin && <Box>
-
-            </Box>} */}
-            <List>
-                {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        
-                    </ListItem>
-                ))} */}
+            
             </List>
         </div>
     );
